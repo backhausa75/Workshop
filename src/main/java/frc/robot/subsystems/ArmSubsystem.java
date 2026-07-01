@@ -3,7 +3,7 @@ package frc.robot.subsystems;
 import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.MotionMagicVoltage;
-import com.ctre.phoenix6.hardware.CANcoder;
+//import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
 import com.ctre.phoenix6.signals.FeedbackSensorSourceValue;
 import com.ctre.phoenix6.signals.GravityTypeValue;
@@ -21,8 +21,8 @@ import frc.robot.subsystems.ArmConstants.CANIDS;
 public class ArmSubsystem extends SubsystemBase {
 
     private final TalonFX Arm;
-    private final CANcoder encoder;
-    private final CANBus Canivore = new CANBus("canivore");
+   // private final CANcoder encoder;
+    private final CANBus Canivore = new CANBus("CANivore");
 
     private final MotionMagicVoltage positionOut = new MotionMagicVoltage(0);
 
@@ -42,7 +42,7 @@ public class ArmSubsystem extends SubsystemBase {
     public ArmSubsystem () {
 
         Arm = new TalonFX(CANIDS.kArmotorId, Canivore);
-        encoder = new CANcoder(CANIDS.kCANcoderId, Canivore);
+       // encoder = new CANcoder(CANIDS.kCANcoderId, Canivore);
 
         TalonFXConfiguration config = new TalonFXConfiguration();
 
@@ -59,7 +59,7 @@ public class ArmSubsystem extends SubsystemBase {
         config.MotionMagic.MotionMagicCruiseVelocity = 0;
         
         config.Feedback.FeedbackSensorSource = FeedbackSensorSourceValue.RemoteCANcoder;
-        config.Feedback.FeedbackRemoteSensorID = encoder.getDeviceID();
+        //config.Feedback.FeedbackRemoteSensorID = encoder.getDeviceID();
 
             for (int i = 0; i < 2; ++i) {
       var status = Arm.getConfigurator().apply(config);
@@ -82,7 +82,7 @@ public class ArmSubsystem extends SubsystemBase {
     private void simulationInit() {
         // Get sim states from devices
         armSimState = Arm.getSimState();
-        encoderSimState = encoder.getSimState();
+        //encoderSimState = encoder.getSimState();
 
         // Configure TalonFX simulator for KrakenX60 motor
         armSimState.setMotorType(TalonFXSimState.MotorType.KrakenX60);

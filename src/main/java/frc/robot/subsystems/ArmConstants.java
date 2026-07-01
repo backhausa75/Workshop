@@ -5,8 +5,8 @@ import frc.robot.util.LoggedTunableNumber;
 public class ArmConstants {
 
         public final class CANIDS {
-                public static final int kArmotorId = 1;
-                public static final int kCANcoderId = 34;
+                public static final int kArmotorId = 16;
+                //public static final int kCANcoderId = 34;
         }
 
         public static final LoggedTunableNumber kpArm = new LoggedTunableNumber("Arm/kp", 0);
