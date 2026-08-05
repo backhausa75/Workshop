@@ -22,7 +22,7 @@ public class ArmSubsystem extends SubsystemBase {
 
     private final TalonFX Arm;
    // private final CANcoder encoder;
-    private final CANBus Canivore = new CANBus("CANivore");
+    private final CANBus Canivore = new CANBus("canivore");
 
     private final MotionMagicVoltage positionOut = new MotionMagicVoltage(0);
 
@@ -138,16 +138,25 @@ public class ArmSubsystem extends SubsystemBase {
         Arm.setControl(positionOut.withPosition(position));
     }
 
+    public void setspeed(double speed) {
+        Arm.set(speed);
+    }
+    
+
     //stop arm motor
     public Command stopCommand() {
         return runOnce(() -> stopMotor());
   }
     // Run motor to horizontal position
     public Command horizontal () {
-        return runOnce(() -> setPosition(0.25));
+        return runOnce(() -> setspeed(0.25));
+        
   }
     // Run motor to vertical position
     public Command vertical () {
-        return runOnce(() -> setPosition(0));
+        return runOnce(() -> setspeed(-0.25));
+    }
+    public Command hello () {
+        return runOnce(() -> System.out.println("hello"));
     }
 }
