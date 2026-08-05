@@ -133,8 +133,9 @@ public class ArmSubsystem extends SubsystemBase {
         Arm.stopMotor();
     }
 
-        public void setPosition(double position) {
+    public void setPosition(double position) {
         // Apply the position output to the leader motor
+       // Arm.setControl(positionOut.withPosition(position));
         Arm.setControl(positionOut.withPosition(position));
     }
 
@@ -149,14 +150,18 @@ public class ArmSubsystem extends SubsystemBase {
   }
     // Run motor to horizontal position
     public Command horizontal () {
-        return runOnce(() -> setspeed(0.25));
+        
+        return runOnce(() -> setPosition(1)).andThen(runOnce(() -> System.out.println(Arm.getPosition())));
         
   }
     // Run motor to vertical position
     public Command vertical () {
-        return runOnce(() -> setspeed(-0.25));
+        return runOnce(() -> setPosition(0)).andThen(runOnce(() -> System.out.println(Arm.getPosition())));
     }
     public Command hello () {
         return runOnce(() -> System.out.println("hello"));
+    }
+    public Command runspeed () {
+        return runOnce(() -> setspeed(1));
     }
 }
