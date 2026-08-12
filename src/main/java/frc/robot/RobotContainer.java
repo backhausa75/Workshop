@@ -62,8 +62,8 @@ public class RobotContainer {
   }
 
   private void configureBindings() {
-    joystick.rightTrigger().whileTrue(armSubsystem.vertical()).onFalse(armSubsystem.stopCommand());
-    joystick.leftTrigger().whileTrue(armSubsystem.horizontal()).onFalse(armSubsystem.stopCommand());
+    joystick.rightTrigger().whileTrue(armSubsystem.vertical());//.onFalse(armSubsystem.stopCommand());
+    joystick.leftTrigger().whileTrue(armSubsystem.horizontal());//.onFalse(armSubsystem.stopCommand());
     joystick.a().whileTrue(armSubsystem.hello());
     joystick.rightBumper().whileTrue(armSubsystem.runspeed()).onFalse(armSubsystem.stopCommand());
 
