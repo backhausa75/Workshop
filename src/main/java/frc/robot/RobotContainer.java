@@ -64,8 +64,8 @@ public class RobotContainer {
   private void configureBindings() {
     joystick.rightTrigger().whileTrue(armSubsystem.vertical());//.onFalse(armSubsystem.stopCommand());
     joystick.leftTrigger().whileTrue(armSubsystem.horizontal());//.onFalse(armSubsystem.stopCommand());
-    joystick.a().whileTrue(armSubsystem.hello());
-    joystick.rightBumper().whileTrue(armSubsystem.runspeed()).onFalse(armSubsystem.stopCommand());
+    joystick.rightBumper().whileTrue(armSubsystem.runbackwards()).onFalse(armSubsystem.stopCommand());
+    joystick.leftBumper().whileTrue(armSubsystem.runspeed()).onFalse(armSubsystem.stopCommand());
 
   //           // Note that X is defined as forward according to WPILib convention,
   //       // and Y is defined as to the left according to WPILib convention.

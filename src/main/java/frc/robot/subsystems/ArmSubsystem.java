@@ -54,7 +54,7 @@ public class ArmSubsystem extends SubsystemBase {
         config.Slot0.kS = ArmConstants.kSArm.get();
         config.Slot0.kP = ArmConstants.kpArm.get();
         config.Slot0.kD = ArmConstants.kDArm.get();
-        config.Feedback.RotorToSensorRatio = 1/23;
+        config.Feedback.SensorToMechanismRatio = 23;
 
         config.Slot0.StaticFeedforwardSign = StaticFeedforwardSignValue.UseClosedLoopSign;
         config.MotorOutput.Inverted = InvertedValue.CounterClockwise_Positive;
@@ -164,10 +164,12 @@ public class ArmSubsystem extends SubsystemBase {
     public Command vertical () {
         return run(() -> setPosition(0));
     }
-    public Command hello () {
-        return runOnce(() -> System.out.println("hello"));
+
+    public Command runbackwards () {
+        return runOnce(() -> setspeed(-.1));
     }
+
     public Command runspeed () {
-        return runOnce(() -> setspeed(.25));
+        return runOnce(() -> setspeed(.1));
     }
 }
