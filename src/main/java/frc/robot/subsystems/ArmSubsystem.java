@@ -79,9 +79,7 @@ public class ArmSubsystem extends SubsystemBase {
     //         simulationInit();
     //     }
 
-    public void periodic() {
-        System.out.println(Arm.getPosition());
-    }
+    
 
     // /**
     //  * Initialize simulation physics and motor models.
@@ -136,7 +134,10 @@ public class ArmSubsystem extends SubsystemBase {
     //     encoderSimState.setRawPosition(simPosition);
     //     encoderSimState.setVelocity(simVelocity / GEAR_RATIO);
     // }
-
+    public void periodic() {
+        System.out.println(Arm.getPosition());
+    }
+    
     public void stopMotor () {
         Arm.stopMotor();
     }
@@ -171,5 +172,8 @@ public class ArmSubsystem extends SubsystemBase {
 
     public Command runspeed () {
         return runOnce(() -> setspeed(.1));
+    }
+    public Command check () {
+        system.out.println("button work")
     }
 }
